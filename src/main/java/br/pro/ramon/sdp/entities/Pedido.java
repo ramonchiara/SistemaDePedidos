@@ -9,9 +9,6 @@ public class Pedido {
     private Usuario usuario;
     private String status;
 
-    public Pedido() {
-    }
-
     public Pedido(String descricao, Usuario usuario) {
         this(null, descricao, usuario, "aguardando");
     }

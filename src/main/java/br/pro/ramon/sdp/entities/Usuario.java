@@ -9,9 +9,6 @@ public class Usuario {
     private String senha;
     private boolean admin;
 
-    public Usuario() {
-    }
-
     public Usuario(String login, String senha) {
         this(login, senha, false);
     }
