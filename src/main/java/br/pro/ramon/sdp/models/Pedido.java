@@ -1,4 +1,6 @@
-package br.pro.ramon.sdp.modelos;
+package br.pro.ramon.sdp.models;
+
+import java.util.Objects;
 
 public class Pedido {
 
@@ -22,6 +24,10 @@ public class Pedido {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -34,8 +40,34 @@ public class Pedido {
         return status;
     }
 
+    public boolean isAtendido() {
+        return "atendido".equals(status);
+    }
+
     public void atender() {
         status = "atendido";
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
 }

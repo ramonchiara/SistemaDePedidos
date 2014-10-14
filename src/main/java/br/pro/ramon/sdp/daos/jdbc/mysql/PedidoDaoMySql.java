@@ -1,10 +1,12 @@
-package br.pro.ramon.sdp.daos.mysql;
+package br.pro.ramon.sdp.daos.jdbc.mysql;
 
 import br.pro.ramon.sdp.daos.DaoException;
+import br.pro.ramon.sdp.daos.DaoFactory;
 import br.pro.ramon.sdp.daos.PedidoDao;
 import br.pro.ramon.sdp.daos.UsuarioDao;
-import br.pro.ramon.sdp.modelos.Pedido;
-import br.pro.ramon.sdp.modelos.Usuario;
+import br.pro.ramon.sdp.daos.jdbc.DaoMySql;
+import br.pro.ramon.sdp.models.Pedido;
+import br.pro.ramon.sdp.models.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +19,7 @@ public class PedidoDaoMySql extends DaoMySql implements PedidoDao {
     private UsuarioDao usuarioDao;
 
     public PedidoDaoMySql() {
-        usuarioDao = new UsuarioDaoMySql();
+        usuarioDao = DaoFactory.getUsuarioDao();
     }
 
     @Override
@@ -41,41 +43,8 @@ public class PedidoDaoMySql extends DaoMySql implements PedidoDao {
     }
 
     @Override
-    public Pedido findById(Long id) {
-        Pedido pedido = null;
-
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            connection = getConnection();
-            statement = connection.prepareStatement("select * from pedidos where id = ?");
-            statement.setLong(1, id);
-            resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                String descricao = resultSet.getString("descricao");
-                Long idUsuario = resultSet.getLong("id_usuario");
-                String status = resultSet.getString("status");
-
-                Usuario usuario = usuarioDao.findById(idUsuario);
-                pedido = new Pedido(id, descricao, usuario, status);
-            }
-
-        } catch (SQLException ex) {
-            throw new DaoException(ex);
-        } finally {
-            close(resultSet);
-            close(statement);
-            close(connection);
-        }
-
-        return pedido;
-    }
-
-    @Override
     public List<Pedido> findAll() {
-        List<Pedido> all = new ArrayList<>();
+        List<Pedido> pedidos = new ArrayList<>();
 
         Connection connection = null;
         PreparedStatement statement = null;
@@ -95,7 +64,7 @@ public class PedidoDaoMySql extends DaoMySql implements PedidoDao {
                 Usuario usuario = usuarioDao.findById(idUsuario);
                 Pedido pedido = new Pedido(id, descricao, usuario, status);
 
-                all.add(pedido);
+                pedidos.add(pedido);
             }
 
         } catch (SQLException ex) {
@@ -106,7 +75,42 @@ public class PedidoDaoMySql extends DaoMySql implements PedidoDao {
             close(connection);
         }
 
-        return all;
+        return pedidos;
+    }
+
+    @Override
+    public List<Pedido> findAllByUsuario(Usuario usuario) {
+        List<Pedido> pedidos = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = getConnection();
+            statement = connection.prepareStatement("select * from pedidos p join usuarios u on p.id_usuario = u.id where u.id = ? order by p.status, u.login");
+            statement.setLong(1, usuario.getId());
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String descricao = resultSet.getString("descricao");
+                String status = resultSet.getString("status");
+
+                Pedido pedido = new Pedido(id, descricao, usuario, status);
+
+                pedidos.add(pedido);
+            }
+
+        } catch (SQLException ex) {
+            throw new DaoException(ex);
+        } finally {
+            close(resultSet);
+            close(statement);
+            close(connection);
+        }
+
+        return pedidos;
     }
 
     @Override

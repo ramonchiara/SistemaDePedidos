@@ -1,4 +1,4 @@
-package br.pro.ramon.sdp.daos.mysql;
+package br.pro.ramon.sdp.daos.jdbc;
 
 import br.pro.ramon.sdp.daos.DaoException;
 import java.sql.Connection;
@@ -15,9 +15,7 @@ public abstract class DaoMySql {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/pedidos", "root", "root");
-        } catch (ClassNotFoundException ex) {
-            throw new DaoException(ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             throw new DaoException(ex);
         }
 
@@ -29,6 +27,7 @@ public abstract class DaoMySql {
             try {
                 connection.close();
             } catch (SQLException ex) {
+                // ignore
             }
         }
     }
@@ -38,6 +37,7 @@ public abstract class DaoMySql {
             try {
                 statement.close();
             } catch (SQLException ex) {
+                // ignore
             }
         }
     }
@@ -47,6 +47,7 @@ public abstract class DaoMySql {
             try {
                 resultSet.close();
             } catch (SQLException ex) {
+                // ignore
             }
         }
     }

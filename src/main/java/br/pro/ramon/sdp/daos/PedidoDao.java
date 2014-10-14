@@ -1,15 +1,16 @@
 package br.pro.ramon.sdp.daos;
 
-import br.pro.ramon.sdp.modelos.Pedido;
+import br.pro.ramon.sdp.models.Pedido;
+import br.pro.ramon.sdp.models.Usuario;
 import java.util.List;
 
 public interface PedidoDao {
 
     void create(Pedido pedido);
 
-    Pedido findById(Long id);
-
     List<Pedido> findAll();
+
+    List<Pedido> findAllByUsuario(Usuario usuario);
 
     void update(Long id, Pedido pedido);
 

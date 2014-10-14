@@ -1,7 +1,7 @@
 package br.pro.ramon.sdp.daos.list;
 
 import br.pro.ramon.sdp.daos.UsuarioDao;
-import br.pro.ramon.sdp.modelos.Usuario;
+import br.pro.ramon.sdp.models.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +20,13 @@ public class UsuarioDaoList implements UsuarioDao {
     }
 
     @Override
-    public Usuario findByLoginAndSenha(String login, String senha) {
+    public Usuario findById(Long id) {
         Usuario usuario = null;
 
         for (int i = 0; i < DB.size(); i++) {
             Usuario u = DB.get(i);
 
-            if (u.getLogin().equals(login) && u.getSenha().equals(senha)) {
+            if (u.getId().equals(id)) {
                 usuario = u;
                 break;
             }
@@ -36,13 +36,29 @@ public class UsuarioDaoList implements UsuarioDao {
     }
 
     @Override
-    public Usuario findById(Long id) {
+    public Usuario findByLogin(String login) {
         Usuario usuario = null;
 
         for (int i = 0; i < DB.size(); i++) {
             Usuario u = DB.get(i);
 
-            if (u.getId().equals(id)) {
+            if (u.getLogin().equals(login)) {
+                usuario = u;
+                break;
+            }
+        }
+
+        return usuario;
+    }
+
+    @Override
+    public Usuario findByLoginAndSenha(String login, String senha) {
+        Usuario usuario = null;
+
+        for (int i = 0; i < DB.size(); i++) {
+            Usuario u = DB.get(i);
+
+            if (u.getLogin().equals(login) && u.getSenha().equals(senha)) {
                 usuario = u;
                 break;
             }
