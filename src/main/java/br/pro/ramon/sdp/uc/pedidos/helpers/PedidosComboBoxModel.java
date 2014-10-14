@@ -2,8 +2,8 @@ package br.pro.ramon.sdp.uc.pedidos.helpers;
 
 import br.pro.ramon.sdp.daos.DaoFactory;
 import br.pro.ramon.sdp.daos.PedidoDao;
-import br.pro.ramon.sdp.models.Pedido;
-import br.pro.ramon.sdp.models.Usuario;
+import br.pro.ramon.sdp.entities.Pedido;
+import br.pro.ramon.sdp.entities.Usuario;
 import java.util.List;
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;

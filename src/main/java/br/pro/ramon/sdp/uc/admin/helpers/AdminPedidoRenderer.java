@@ -1,6 +1,6 @@
 package br.pro.ramon.sdp.uc.admin.helpers;
 
-import br.pro.ramon.sdp.models.Pedido;
+import br.pro.ramon.sdp.entities.Pedido;
 import br.pro.ramon.sdp.uc.pedidos.helpers.PedidoRenderer;
 import java.awt.Component;
 import javax.swing.JList;

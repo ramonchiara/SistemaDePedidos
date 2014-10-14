@@ -1,7 +1,7 @@
 package br.pro.ramon.sdp.uc.pedidos;
 
-import br.pro.ramon.sdp.models.Pedido;
-import br.pro.ramon.sdp.models.Usuario;
+import br.pro.ramon.sdp.entities.Pedido;
+import br.pro.ramon.sdp.entities.Usuario;
 import br.pro.ramon.sdp.uc.pedidos.helpers.PedidoRenderer;
 import br.pro.ramon.sdp.uc.pedidos.helpers.PedidosComboBoxModel;
 import java.awt.BorderLayout;

@@ -1,6 +1,6 @@
 package br.pro.ramon.sdp.uc.admin.helpers;
 
-import br.pro.ramon.sdp.models.Usuario;
+import br.pro.ramon.sdp.entities.Usuario;
 import br.pro.ramon.sdp.uc.pedidos.helpers.PedidosComboBoxModel;
 
 public class AdminPedidosComboBoxModel extends PedidosComboBoxModel {

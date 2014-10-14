@@ -1,7 +1,7 @@
 package br.pro.ramon.sdp.daos.list;
 
 import br.pro.ramon.sdp.daos.UsuarioDao;
-import br.pro.ramon.sdp.models.Usuario;
+import br.pro.ramon.sdp.entities.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 

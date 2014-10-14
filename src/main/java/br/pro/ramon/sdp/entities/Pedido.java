@@ -1,4 +1,4 @@
-package br.pro.ramon.sdp.models;
+package br.pro.ramon.sdp.entities;
 
 import java.util.Objects;
 
@@ -8,6 +8,9 @@ public class Pedido {
     private String descricao;
     private Usuario usuario;
     private String status;
+
+    public Pedido() {
+    }
 
     public Pedido(String descricao, Usuario usuario) {
         this(null, descricao, usuario, "aguardando");

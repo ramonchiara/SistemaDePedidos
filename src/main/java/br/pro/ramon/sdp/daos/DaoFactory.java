@@ -1,7 +1,7 @@
 package br.pro.ramon.sdp.daos;
 
-import br.pro.ramon.sdp.daos.jdbc.mysql.PedidoDaoMySql;
-import br.pro.ramon.sdp.daos.jdbc.mysql.UsuarioDaoMySql;
+import br.pro.ramon.sdp.daos.mysql.PedidoDaoMySql;
+import br.pro.ramon.sdp.daos.mysql.UsuarioDaoMySql;
 
 public abstract class DaoFactory {
 

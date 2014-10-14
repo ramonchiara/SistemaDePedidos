@@ -1,6 +1,6 @@
 package br.pro.ramon.sdp.daos;
 
-import br.pro.ramon.sdp.models.Usuario;
+import br.pro.ramon.sdp.entities.Usuario;
 
 public interface UsuarioDao {
 

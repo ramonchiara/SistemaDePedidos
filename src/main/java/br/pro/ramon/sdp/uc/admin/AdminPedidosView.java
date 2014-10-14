@@ -1,7 +1,7 @@
 package br.pro.ramon.sdp.uc.admin;
 
-import br.pro.ramon.sdp.models.Pedido;
-import br.pro.ramon.sdp.models.Usuario;
+import br.pro.ramon.sdp.entities.Pedido;
+import br.pro.ramon.sdp.entities.Usuario;
 import br.pro.ramon.sdp.uc.admin.helpers.AdminPedidoRenderer;
 import br.pro.ramon.sdp.uc.admin.helpers.AdminPedidosComboBoxModel;
 import java.awt.BorderLayout;
@@ -98,7 +98,7 @@ public class AdminPedidosView extends JFrame implements ItemListener, ActionList
         Pedido pedido = (Pedido) cmbPedidos.getSelectedItem();
 
         adminPedidosController.atender(pedido);
-        
+
         adminPedidosComboBoxModel.loadPedidos();
     }
 

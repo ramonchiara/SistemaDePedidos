@@ -1,9 +1,9 @@
-package br.pro.ramon.sdp.daos.jdbc.mysql;
+package br.pro.ramon.sdp.daos.mysql;
 
 import br.pro.ramon.sdp.daos.DaoException;
 import br.pro.ramon.sdp.daos.UsuarioDao;
-import br.pro.ramon.sdp.daos.jdbc.DaoMySql;
-import br.pro.ramon.sdp.models.Usuario;
+import br.pro.ramon.sdp.daos.mysql.helpers.DaoMySql;
+import br.pro.ramon.sdp.entities.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

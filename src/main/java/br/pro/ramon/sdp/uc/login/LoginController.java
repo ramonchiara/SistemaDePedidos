@@ -2,7 +2,7 @@ package br.pro.ramon.sdp.uc.login;
 
 import br.pro.ramon.sdp.daos.DaoFactory;
 import br.pro.ramon.sdp.daos.UsuarioDao;
-import br.pro.ramon.sdp.models.Usuario;
+import br.pro.ramon.sdp.entities.Usuario;
 import br.pro.ramon.sdp.uc.admin.AdminPedidosController;
 import br.pro.ramon.sdp.uc.pedidos.PedidosController;
 

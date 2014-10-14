@@ -1,4 +1,4 @@
-package br.pro.ramon.sdp.models;
+package br.pro.ramon.sdp.entities;
 
 import java.util.Objects;
 
@@ -8,6 +8,9 @@ public class Usuario {
     private String login;
     private String senha;
     private boolean admin;
+
+    public Usuario() {
+    }
 
     public Usuario(String login, String senha) {
         this(login, senha, false);

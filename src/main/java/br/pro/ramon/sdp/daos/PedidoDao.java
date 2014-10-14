@@ -1,7 +1,7 @@
 package br.pro.ramon.sdp.daos;
 
-import br.pro.ramon.sdp.models.Pedido;
-import br.pro.ramon.sdp.models.Usuario;
+import br.pro.ramon.sdp.entities.Pedido;
+import br.pro.ramon.sdp.entities.Usuario;
 import java.util.List;
 
 public interface PedidoDao {

@@ -1,4 +1,4 @@
-package br.pro.ramon.sdp.daos.jdbc;
+package br.pro.ramon.sdp.daos.mysql.helpers;
 
 import br.pro.ramon.sdp.daos.DaoException;
 import java.sql.Connection;
